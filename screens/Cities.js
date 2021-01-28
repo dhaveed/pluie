@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
-import { Fontisto } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 const cities = [
     {
@@ -8,14 +8,14 @@ const cities = [
         name: "Mumbai",
         temp: "22",
         condition: "Light Drizzle",
-        type: "rain"
+        type: "cloud-drizzle"
     },
     {
         id: 2,
         name: "Goa",
         temp: "26",
         condition: "Sunny",
-        type: "day-sunny"
+        type: "sun"
     }
 ]
 
@@ -29,7 +29,7 @@ export default function Cities() {
           <Text style={styles.cityCondition}>{item.condition}</Text>
         </View>
         <View>
-            <Fontisto name={item.type} size={36}/>
+            <Feather name={item.type} size={36}/>
         </View>
       </TouchableOpacity>
     );
