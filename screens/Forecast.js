@@ -1,16 +1,29 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AntDesign, Fontisto } from "@expo/vector-icons";
+import { useTheme } from "@react-navigation/native";
 
 export default function Forecast() {
+  const { colors } = useTheme();
 
-    const icons = ["day-sunny", "snow", "rain", "lightning", "night-alt-cloudy", "night-clear"]
+  const icons = [
+    "day-sunny",
+    "snow",
+    "rain",
+    "lightning",
+    "night-alt-cloudy",
+    "night-clear",
+  ];
 
   const ForecastItem = () => {
     return (
       <View style={styles.forecastItem}>
-        <Text style={styles.forecastDatetime}>10:00</Text>
-        <Fontisto name={icons[Math.floor(Math.random() * icons.length)]} style={styles.forecastIcon} />
+        <Text style={[styles.forecastDatetime, { color: colors.text }]}>10:00</Text>
+        <Fontisto
+          name={icons[Math.floor(Math.random() * icons.length)]}
+          style={styles.forecastIcon}
+          color={colors.text}
+        />
         {/* <View>
           <Text>26&deg;C</Text>
         </View> */}
@@ -19,9 +32,9 @@ export default function Forecast() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.pageTitle}>
-        <Text style={styles.title}>Forecast</Text>
+        <Text style={[styles.title, { color: colors.text }]}>Forecast</Text>
       </View>
       <View style={styles.contentWrap}>
         <View style={styles.forecastSection}>
@@ -35,9 +48,9 @@ export default function Forecast() {
             <ForecastItem />
           </View>
         </View>
-        
+
         <View style={styles.forecastSection}>
-          <Text style={styles.forecastSectionTitle}>Daily Forecast</Text>
+          <Text style={[styles.forecastSectionTitle, { color: colors.text }]}>Daily Forecast</Text>
           <View style={styles.forecastListWrap}>
             <ForecastItem />
             <ForecastItem />
@@ -55,24 +68,24 @@ export default function Forecast() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 80,
+    paddingVertical: 40,
     paddingHorizontal: 30,
   },
   pageTitle: {
     flex: 0.2,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
     letterSpacing: -1,
-    fontWeight: "500"
+    fontWeight: "500",
   },
   contentWrap: {
     flex: 1,
   },
   forecastSection: {
-      marginBottom: 50
+    marginBottom: 50,
   },
   forecastSectionTitle: {
     marginBottom: 20,
@@ -81,15 +94,15 @@ const styles = StyleSheet.create({
   },
   forecastListWrap: {
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   forecastItem: {
     // marginRight: 20,
     alignItems: "center",
   },
   forecastDatetime: {
-      marginBottom: 8,
-      fontSize: 13,
+    marginBottom: 8,
+    fontSize: 13,
   },
   forecastIcon: {
     fontSize: 28,

@@ -29,7 +29,7 @@ export const WeatherHeaderLeft = ({ navigation }) => {
     <View style={styles.headerLeftWrap}>
       {/* <TouchableOpacity> */}
       <Text style={[styles.headerLocation, { color: colors.text }]}>
-        Mumbai
+        Uxbridge, London
       </Text>
       <Text style={[styles.smallText, { color: colors.text }]}>
         Current location
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "500",
     letterSpacing: -1,
-    marginBottom: 1,
+    marginBottom: 2,
   },
   smallText: {
     fontSize: 13,

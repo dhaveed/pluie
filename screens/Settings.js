@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import { SET_THEME } from "../redux/action-types";
@@ -53,7 +53,7 @@ function Settings(props) {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+    <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.section}>
         <Text style={[styles.sectionTitle, { color: colors.text }]}>Theme</Text>
         <SettingItem
@@ -107,7 +107,7 @@ function Settings(props) {
           }}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

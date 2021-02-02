@@ -24,10 +24,9 @@ import { connect } from "react-redux";
 const mapStateToProps = (state) => {
   const { ui } = state;
   return {
-    ui
-  }
+    ui,
+  };
 };
-
 
 const Stack = createStackNavigator();
 
@@ -80,7 +79,15 @@ function RootNavigator(props) {
               headerLeft: () => <WeatherHeaderLeft navigation={navigation} />,
             })}
           />
-          <Stack.Screen name="Forecast" component={Forecast} />
+          <Stack.Screen
+            name="Forecast"
+            component={Forecast}
+            options={({ route, navigation }) => ({
+              headerRight: () => <WeatherHeaderRight navigation={navigation} />,
+              headerLeft: () => <WeatherHeaderLeft navigation={navigation} />,
+            })}
+            mode={"modal"}
+          />
           <Stack.Screen
             name="Cities"
             component={Cities}

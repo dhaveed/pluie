@@ -45,7 +45,7 @@ export default function Cities() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <FlatList data={cities} renderItem={(item) => CityItem(item)} />
+      <FlatList data={cities} renderItem={(item) => CityItem(item)} keyExtractor={(item, index) => index.toString()} />
     </View>
   );
 }

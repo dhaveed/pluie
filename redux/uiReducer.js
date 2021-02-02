@@ -7,7 +7,6 @@ const initialState = {
 function uiReducer(state = initialState, action){
     switch(action.type){
         case SET_THEME:
-            console.log("Changing theme to " + action.payload)
             return {
                 ...state,
                 theme: action.payload

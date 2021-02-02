@@ -12,7 +12,6 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-//   weather: weatherReducer,
     weather: weatherReducer,
     ui: uiReducer
 });
