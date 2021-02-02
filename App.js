@@ -1,24 +1,18 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Cities from "./screens/Cities";
-import Forecast from "./screens/Forecast";
-import Settings from "./screens/Settings";
-import Weather from "./screens/Weather";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor, store } from "./redux/store";
+import RootNavigator from "./screens/RootNavigator";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Weather />
-    </View>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <RootNavigator />
+      </PersistGate>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 /*
   Day 1:
@@ -30,11 +24,18 @@ const styles = StyleSheet.create({
       4. All screens basic structure and components created [Cities, Settings, Forecast, Weather Screens]
     }
   _____________________________________________________________________________________
+  
+  Day 2:
+    Time Spent => xhrs [1:45pm - 2:40pm, 2:45pm - Xpm]
+    Tasks Completed => {
+      1. 
+    }
+  _____________________________________________________________________________________
 
   What's left to do?
-   [] Set up and configure navigation
-   [] Set up and configure navigation headers
-   [] Set up and configure redux/redux-thunk/async-storage
+   [x] Set up and configure navigation
+   [x] Set up and configure navigation headers
+   [x] Set up and configure redux/redux-thunk/async-storage
    [] Set up and hookup theming functionality
    [] Retrieve live weather data from API on weather screen
    [] Retrieve live data on Forecast screen

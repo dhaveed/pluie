@@ -1,15 +1,21 @@
 import { Feather } from "@expo/vector-icons";
+import { useTheme } from "@react-navigation/native";
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 export default function Weather() {
+  const { color } = useTheme();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
+    {/* <View style={[styles.container, { backgroundColor: color.background }]}> */}
       <View style={styles.contentWrap}>
         <Text style={styles.smallText}>in sync</Text>
         {/* Might change the in sync text to something for switching between temp units */}
         <View style={styles.weatherContainer}>
           <Text style={styles.date}>Friday, 25 December 2020</Text>
+          <Text style={styles.date}>
+            {JSON.stringify(color)}
+          </Text>
           <View style={styles.mainTemp}>
             <Text style={styles.mainTempText}>22</Text>
             <Text style={styles.tempUnit}>&deg;C</Text>
@@ -40,6 +46,9 @@ export default function Weather() {
           </View>
         </View>
       </View>
+      <View style={styles.forecastArrowWrap}>
+        <Feather name="chevron-up" size={24} />
+      </View>
     </View>
   );
 }
@@ -47,8 +56,9 @@ export default function Weather() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 80,
     paddingHorizontal: 30,
+    paddingVertical: 40,
+    backgroundColor: "white"
   },
   contentWrap: {
     alignItems: "center",
@@ -124,4 +134,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontWeight: "500",
   },
+  forecastArrowWrap: {
+    position: "absolute",
+    width: "100%",
+    alignItems: "center",
+    alignSelf: "center",
+    bottom: 50,
+  }
 });

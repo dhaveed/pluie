@@ -79,7 +79,8 @@ export default function Settings() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 80,
+    backgroundColor: "white",
+    paddingVertical: 40,
     paddingHorizontal: 30,
   },
   section: {
