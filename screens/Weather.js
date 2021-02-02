@@ -4,7 +4,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 export default function Weather() {
-  const { color } = useTheme();
+  const { colors } = useTheme();
   return (
     <View style={[styles.container]}>
     {/* <View style={[styles.container, { backgroundColor: color.background }]}> */}
@@ -14,7 +14,7 @@ export default function Weather() {
         <View style={styles.weatherContainer}>
           <Text style={styles.date}>Friday, 25 December 2020</Text>
           <Text style={styles.date}>
-            {JSON.stringify(color)}
+            {JSON.stringify(colors)}
           </Text>
           <View style={styles.mainTemp}>
             <Text style={styles.mainTempText}>22</Text>

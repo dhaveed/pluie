@@ -4,31 +4,36 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 export const WeatherHeaderRight = ({ navigation }) => {
+  const { colors } = useTheme();
   return (
     <View style={styles.headerRightStyles}>
       <TouchableOpacity
         onPress={() => navigation.navigate("Cities")}
         style={styles.headerRightButton}
       >
-        <Feather name="map-pin" size={24} />
+        <Feather name="map-pin" size={24} color={colors.text} />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Settings")}
         style={styles.headerRightButton}
       >
-        <Feather name="settings" size={24} />
+        <Feather name="settings" size={24} color={colors.text} />
       </TouchableOpacity>
     </View>
   );
 };
 
 export const WeatherHeaderLeft = ({ navigation }) => {
-    const { color } = useTheme();
+  const { colors } = useTheme();
   return (
     <View style={styles.headerLeftWrap}>
       {/* <TouchableOpacity> */}
-        <Text style={[styles.headerLocation]}>Mumbai</Text>
-        <Text style={styles.smallText}>Current location</Text>
+      <Text style={[styles.headerLocation, { color: colors.text }]}>
+        Mumbai
+      </Text>
+      <Text style={[styles.smallText, { color: colors.text }]}>
+        Current location
+      </Text>
       {/* </TouchableOpacity> */}
     </View>
   );

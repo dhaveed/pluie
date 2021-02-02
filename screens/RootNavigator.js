@@ -31,10 +31,9 @@ const BackButton = ({ label, navigation }) => {
 
 export default function RootNavigator() {
   const scheme = useColorScheme();
-  const { color} = useTheme
   return (
     <AppearanceProvider>
-      <NavigationContainer theme={scheme === "light" ? DarkTheme : DefaultTheme}>
+      <NavigationContainer theme={scheme === "dark" ? MonoDark : MonoLight}>
         <Stack.Navigator
           screenOptions={{
             headerStyle: {

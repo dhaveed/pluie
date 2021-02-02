@@ -1,8 +1,10 @@
+import { DefaultTheme } from "@react-navigation/native";
+
 export const MonoLight = {
     dark: false,
+    ...DefaultTheme,
     colors: {
-        text: "#000000",
-        icons: "#000000",
-        background: "#fff"
+        background: 'rgb(255, 255, 255)',
+        text: 'rgb(0, 0, 0)',
     }
 }
