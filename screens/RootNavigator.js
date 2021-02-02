@@ -70,7 +70,7 @@ function RootNavigator(props) {
             },
             title: "",
           }}
-          mode={"modal"}
+          // mode={"modal"}
         >
           <Stack.Screen
             name="Weather"

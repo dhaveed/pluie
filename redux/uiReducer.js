@@ -1,7 +1,7 @@
 import { SET_THEME } from "./action-types";
 
 const initialState = {
-    theme: "dark",
+    theme: "light",
 };
 
 function uiReducer(state = initialState, action){
