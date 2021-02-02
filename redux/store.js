@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
-import interfaceReducer from "./interfaceReducer";
+import uiReducer from "./uiReducer";
 import weatherReducer from "./weatherReducer";
 
 const persistConfig = {
@@ -14,7 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
 //   weather: weatherReducer,
     weatherReducer: persistReducer(persistConfig, weatherReducer),
-    interface: interfaceReducer
+    ui: uiReducer
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));

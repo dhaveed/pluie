@@ -4,7 +4,7 @@ export const MonoDark = {
     dark: true,
     ...DarkTheme,
     colors: {
-        background: 'rgb(0, 0, 0)',
+        background: '#000',
         text: 'rgb(255, 255, 255)',
     }
 }

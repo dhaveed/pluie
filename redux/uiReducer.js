@@ -1,12 +1,13 @@
 import { SET_THEME } from "./action-types";
 
 const initialState = {
-    theme: "light",
+    theme: "dark",
 };
 
-function interfaceReducer(state = initialState, action){
+function uiReducer(state = initialState, action){
     switch(action.type){
         case SET_THEME:
+            console.log("Changing theme to " + action.payload)
             return {
                 ...state,
                 theme: action.payload
@@ -16,4 +17,4 @@ function interfaceReducer(state = initialState, action){
     }
 };
 
-export default interfaceReducer;
+export default uiReducer;

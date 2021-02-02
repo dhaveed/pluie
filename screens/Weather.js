@@ -1,54 +1,51 @@
 import { Feather } from "@expo/vector-icons";
-import { useTheme } from "@react-navigation/native";
+import { NavigationContainer, useTheme } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function Weather() {
+export default function Weather({ navigation }) {
   const { colors } = useTheme();
   return (
-    <View style={[styles.container]}>
-    {/* <View style={[styles.container, { backgroundColor: color.background }]}> */}
+    // <View style={[styles.container]}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.contentWrap}>
-        <Text style={styles.smallText}>in sync</Text>
+        <Text style={[styles.smallText, { color: colors.text}]}>in sync</Text>
         {/* Might change the in sync text to something for switching between temp units */}
         <View style={styles.weatherContainer}>
-          <Text style={styles.date}>Friday, 25 December 2020</Text>
-          <Text style={styles.date}>
-            {JSON.stringify(colors)}
-          </Text>
+          <Text style={[styles.date, { color: colors.text}]}>Friday, 25 December 2020</Text>
           <View style={styles.mainTemp}>
-            <Text style={styles.mainTempText}>22</Text>
-            <Text style={styles.tempUnit}>&deg;C</Text>
+            <Text style={[styles.mainTempText, { color: colors.text}]}>22</Text>
+            <Text style={[styles.tempUnit, { color: colors.text}]}>&deg;C</Text>
           </View>
           <View style={styles.tempThresholdContainer}>
             <View style={styles.tempThresholdWrap}>
-              <Feather name="arrow-down" size={24} />
-              <Text style={styles.tempThresholdText}>16&deg;C</Text>
+              <Feather name="arrow-down" size={24} color={colors.text} />
+              <Text style={[styles.tempThresholdText, { color: colors.text}]}>16&deg;C</Text>
             </View>
             <View style={styles.tempThresholdWrap}>
-              <Feather name="arrow-up" size={24} />
-              <Text style={styles.tempThresholdText}>26&deg;C</Text>
+              <Feather name="arrow-up" size={24} color={colors.text} />
+              <Text style={[styles.tempThresholdText, { color: colors.text}]}>26&deg;C</Text>
             </View>
           </View>
-          <View style={styles.weatherConditionWrap}>
-            <Feather name="cloud-drizzle" size={128} />
-            <Text style={styles.weatherCondition}>Light Drizzle</Text>
+          <View style={[styles.weatherConditionWrap, { color: colors.text}]}>
+            <Feather name="cloud-drizzle" size={128} color={colors.text} />
+            <Text style={[styles.weatherCondition, { color: colors.text}]}>Light Drizzle</Text>
           </View>
           <View style={styles.weatherFooter}>
             <View style={styles.weatherFooterItem}>
-              <Feather name="sunrise" style={styles.todIcon} />
-              <Text style={styles.tod}>09:18 AM</Text>
+              <Feather name="sunrise" style={[styles.todIcon, { color: colors.text}]} />
+              <Text style={[styles.tod, { color: colors.text}]}>09:18 AM</Text>
             </View>
             <View style={styles.weatherFooterItem}>
-              <Feather name="sunrise" style={styles.todIcon} />
-              <Text style={styles.tod}>09:18 AM</Text>
+              <Feather name="sunrise" style={[styles.todIcon, { color: colors.text}]} />
+              <Text style={[styles.tod, { color: colors.text}]}>09:18 AM</Text>
             </View>
           </View>
         </View>
       </View>
-      <View style={styles.forecastArrowWrap}>
-        <Feather name="chevron-up" size={24} />
-      </View>
+      <TouchableOpacity style={styles.forecastArrowWrap} onPress={() => navigation.navigate("Forecast")}>
+        <Feather name="chevron-up" size={24} color={colors.text} />
+      </TouchableOpacity>
     </View>
   );
 }

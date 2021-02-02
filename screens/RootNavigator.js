@@ -10,27 +10,54 @@ import {
   WeatherHeaderLeft,
   WeatherHeaderRight,
 } from "../components/WeatherHeader";
-import { DarkTheme, DefaultTheme, NavigationContainer, useTheme } from "@react-navigation/native";
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+  useTheme,
+} from "@react-navigation/native";
 import { AppearanceProvider, useColorScheme } from "react-native-appearance";
 import { MonoDark } from "../theme/dark";
 import { MonoLight } from "../theme/light";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => {
+  const { ui } = state;
+  return {
+    ui
+  }
+};
+
 
 const Stack = createStackNavigator();
 
 const BackButton = ({ label, navigation }) => {
+  const { colors } = useTheme();
   return (
     <TouchableOpacity
       onPress={() => navigation.goBack()}
       style={styles.backButton}
     >
-      <Feather name="chevron-left" size={20} />
-      <Text style={styles.backButtonLabel}>{label}</Text>
+      <Feather name="chevron-left" size={20} color={colors.text} />
+      <Text style={[styles.backButtonLabel, { color: colors.text }]}>
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 };
 
-export default function RootNavigator() {
-  const scheme = useColorScheme();
+const HeaderRight = () => {
+  const { colors } = useTheme();
+  return (
+    <TouchableOpacity style={styles.headerRight}>
+      <Feather name="plus" size={20} color={colors.text} />
+    </TouchableOpacity>
+  );
+};
+
+function RootNavigator(props) {
+  // const scheme = useColorScheme();
+  const scheme = props.ui.theme;
   return (
     <AppearanceProvider>
       <NavigationContainer theme={scheme === "dark" ? MonoDark : MonoLight}>
@@ -39,10 +66,11 @@ export default function RootNavigator() {
             headerStyle: {
               borderBottomWidth: 0,
               shadowOpacity: 0,
+              backgroundColor: scheme === "dark" ? "black" : "white",
             },
             title: "",
           }}
-          // mode={"modal"}
+          mode={"modal"}
         >
           <Stack.Screen
             name="Weather"
@@ -64,11 +92,7 @@ export default function RootNavigator() {
                   navigation={navigation}
                 />
               ),
-              headerRight: () => (
-                <TouchableOpacity style={styles.headerRight}>
-                  <Feather name="plus" size={20} />
-                </TouchableOpacity>
-              ),
+              headerRight: () => <HeaderRight />,
             })}
           />
           <Stack.Screen
@@ -104,3 +128,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
   },
 });
+
+export default connect(mapStateToProps)(RootNavigator);

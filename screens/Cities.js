@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { useTheme } from "@react-navigation/native";
 
 const cities = [
   {
@@ -26,23 +27,24 @@ const cities = [
 ];
 
 export default function Cities() {
+  const { colors } = useTheme();
   const CityItem = ({ item }) => {
     return (
       <TouchableOpacity style={styles.cityItemWrap}>
         <View>
-          <Text style={styles.cityName}>{item.name}</Text>
-          <Text style={styles.cityTemp}>{item.temp}&deg;C</Text>
-          <Text style={styles.cityCondition}>{item.condition}</Text>
+          <Text style={[styles.cityName, {color: colors.text}]}>{item.name}</Text>
+          <Text style={[styles.cityTemp, {color: colors.text}]}>{item.temp}&deg;C</Text>
+          <Text style={[styles.cityCondition, {color: colors.text}]}>{item.condition}</Text>
         </View>
         <View>
-          <Feather name={item.type} size={36} />
+          <Feather name={item.type} size={36} color={colors.text} />
         </View>
       </TouchableOpacity>
     );
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <FlatList data={cities} renderItem={(item) => CityItem(item)} />
     </View>
   );
