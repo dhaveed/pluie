@@ -2,6 +2,14 @@ import { Feather } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => {
+  const { ui, weather } = state;
+  return {
+    weather
+  }
+}
 
 export const WeatherHeaderRight = ({ navigation }) => {
   const { colors } = useTheme();
@@ -23,7 +31,7 @@ export const WeatherHeaderRight = ({ navigation }) => {
   );
 };
 
-export const WeatherHeaderLeft = ({ navigation }) => {
+const WeatherHeaderLeft = ({ navigation }) => {
   const { colors } = useTheme();
   return (
     <View style={styles.headerLeftWrap}>
@@ -66,3 +74,5 @@ const styles = StyleSheet.create({
     letterSpacing: -1,
   },
 });
+
+export default connect(mapStateToProps)(WeatherHeaderLeft);

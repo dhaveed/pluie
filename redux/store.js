@@ -8,7 +8,7 @@ import weatherReducer from "./weatherReducer";
 const persistConfig = {
     key: "root",
     storage: AsyncStorage,
-    whitelist: ['weather', "ui"]
+    whitelist: ["ui"]
 }
 
 const rootReducer = combineReducers({

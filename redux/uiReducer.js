@@ -1,7 +1,9 @@
-import { SET_THEME } from "./action-types";
+import { SET_LOADING, SET_THEME } from "./action-types";
 
 const initialState = {
     theme: "light",
+    loading: false,
+    unit: "metric"
 };
 
 function uiReducer(state = initialState, action){
@@ -11,6 +13,11 @@ function uiReducer(state = initialState, action){
                 ...state,
                 theme: action.payload
             };
+        case SET_LOADING:
+            return {
+                ...state,
+                loading: action.payload
+            }
         default:
             return state;
     }

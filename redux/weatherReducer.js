@@ -1,7 +1,8 @@
-import { GET_WEATHER } from "./action-types"
+import { ADD_WEATHER_TO_COLLECTION, GET_WEATHER } from "./action-types"
 
 const initialState = {
     weather: [],
+    primary: {},
 };
 
 function weatherReducer(state = initialState, action){
@@ -9,8 +10,17 @@ function weatherReducer(state = initialState, action){
         case GET_WEATHER:
             return {
                 ...state,
-                weather: action.payload
-            };
+                primary: action.payload,
+                weather: [
+                    ...state.weather,
+                    action.payload
+                ]
+            }
+        case ADD_WEATHER_TO_COLLECTION:
+            return {
+                ...state,
+                weather: [...state.weather, action.payload]
+            }
         default:
             return state;
     }

@@ -26,11 +26,20 @@ export default function App() {
   _____________________________________________________________________________________
   
   Day 2:
-    Time Spent => 2hrs 43mins [1:45pm - 2:40pm, 2:45pm - 3:45pm, 4:07pm - 5:00pm]
+    Time Spent => 2hrs 48mins [1:45pm - 2:40pm, 2:45pm - 3:45pm, 4:07pm - 5:00pm]
     Tasks Completed => {
       1. Set up and configure navigation
       2. Set up and configure navigation headers
       3. Set up and hookup theming functionality
+    }
+  _____________________________________________________________________________________
+  
+  Day 3:
+    Time Spent => Xhrs [10:00am - 10:30am, 10:45am - 11:40am]
+    Tasks Completed => {
+      1. 
+      2. 
+      3. 
     }
   _____________________________________________________________________________________
 
@@ -39,4 +48,8 @@ export default function App() {
    [] Retrieve live data on Forecast screen
    [] Connect all Settings options as appropriate
    [] Cities "add" functionality
+   [] Work Temp Conversion between units (Faren, Celci, and Kelvin --- API default is kelvin)
+
+   Longitude: 7.47567994320319
+   Latitude: 8.996768617291275
 */
