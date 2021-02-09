@@ -6,10 +6,10 @@ import Forecast from "./Forecast";
 import Settings from "./Settings";
 import Weather from "./Weather";
 import { Feather } from "@expo/vector-icons";
-// import {
-//   WeatherHeaderLeft,
-//   WeatherHeaderRight,
-// } from "../components/WeatherHeader";
+import {
+  WeatherHeaderLeft,
+  WeatherHeaderRight,
+} from "../components/WeatherHeader";
 import {
   DarkTheme,
   DefaultTheme,
@@ -58,43 +58,6 @@ const HeaderRight = () => {
 function RootNavigator(props) {
   // const scheme = useColorScheme();
   const scheme = props.ui.theme;
-
-  const WeatherHeaderRight = ({ navigation }) => {
-    const { colors } = useTheme();
-    return (
-      <View style={styles.headerRightStyles}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Cities")}
-          style={styles.headerRightButton}
-        >
-          <Feather name="map-pin" size={24} color={colors.text} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Settings")}
-          style={styles.headerRightButton}
-        >
-          <Feather name="settings" size={24} color={colors.text} />
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
-  const WeatherHeaderLeft = ({ navigation }) => {
-    const { colors } = useTheme();
-    return (
-      <View style={styles.headerLeftWrap}>
-        {/* <TouchableOpacity> */}
-        <Text style={[styles.headerLocation, { color: colors.text }]}>
-          {!!props.weather.primary.main && props.weather.primary.name}
-        </Text>
-        <Text style={[styles.smallText, { color: colors.text }]}>
-          Current location
-        </Text>
-        {/* </TouchableOpacity> */}
-      </View>
-    );
-  };
-
   return (
     <AppearanceProvider>
       <NavigationContainer theme={scheme === "dark" ? MonoDark : MonoLight}>
@@ -109,14 +72,14 @@ function RootNavigator(props) {
           }}
           // mode={"modal"}
         >
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Weather"
             component={Weather}
             options={({ route, navigation }) => ({
               headerRight: () => <WeatherHeaderRight navigation={navigation} />,
-              headerLeft: () => <WeatherHeaderLeft navigation={navigation} />,
+              headerLeft: () => <WeatherHeaderLeft navigation={navigation} location={!!props.weather.primary.main && props.weather.primary.name} />,
             })}
-          />
+          /> */}
           <Stack.Screen
             name="Forecast"
             component={Forecast}
@@ -171,32 +134,6 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     paddingHorizontal: 25,
-  },
-
-  headerRightStyles: {
-    flexDirection: "row",
-    alignItems: "center",
-    // borderWidth: 1,
-    paddingHorizontal: 25,
-    justifyContent: "space-between",
-  },
-  headerRightButton: {
-    marginLeft: 20,
-  },
-  headerLeftWrap: {
-    paddingHorizontal: 25,
-  },
-  headerLocation: {
-    fontSize: 20,
-    fontWeight: "500",
-    letterSpacing: -1,
-    marginBottom: 2,
-  },
-  smallText: {
-    fontSize: 13,
-    opacity: 0.3,
-    fontWeight: "500",
-    letterSpacing: -1,
   },
 });
 

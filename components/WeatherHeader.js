@@ -31,13 +31,13 @@ export const WeatherHeaderRight = ({ navigation }) => {
   );
 };
 
-const WeatherHeaderLeft = ({ navigation }) => {
+export const WeatherHeaderLeft = ({ navigation, location }) => {
   const { colors } = useTheme();
   return (
     <View style={styles.headerLeftWrap}>
       {/* <TouchableOpacity> */}
       <Text style={[styles.headerLocation, { color: colors.text }]}>
-        Uxbridge, London
+        {location}
       </Text>
       <Text style={[styles.smallText, { color: colors.text }]}>
         Current location
@@ -74,5 +74,3 @@ const styles = StyleSheet.create({
     letterSpacing: -1,
   },
 });
-
-export default connect(mapStateToProps)(WeatherHeaderLeft);

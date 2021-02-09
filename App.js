@@ -35,7 +35,7 @@ export default function App() {
   _____________________________________________________________________________________
   
   Day 3:
-    Time Spent => Xhrs [10:00am - 10:30am, 10:45am - 11:40am]
+    Time Spent => Xhrs [10:00am - 10:30am, 10:45am - 11:40am, 12:45pm - 1:20pm]
     Tasks Completed => {
       1. 
       2. 

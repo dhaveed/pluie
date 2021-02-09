@@ -1,9 +1,18 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Linking,
+} from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import { SET_THEME } from "../redux/action-types";
 import { connect } from "react-redux";
+import MonoModal from "../components/MonoModal";
+import { useState } from "react";
 
 const theme = "light";
 
@@ -22,6 +31,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function Settings(props) {
   const { colors } = useTheme();
+  const [modalType, setModalType] = useState("about");
 
   const changeTheme = (theme) => {
     const { setTheme } = props;
@@ -31,10 +41,7 @@ function Settings(props) {
   const SettingItem = ({ item }) => {
     const { colors } = useTheme();
     return (
-      <TouchableOpacity
-        style={styles.settingItem}
-        onPress={item.action}
-      >
+      <TouchableOpacity style={styles.settingItem} onPress={item.action}>
         <View>
           <Text style={[styles.settingItemTitle, { color: colors.text }]}>
             {item.title}
@@ -53,7 +60,9 @@ function Settings(props) {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
+    <ScrollView
+      style={[styles.container, { backgroundColor: colors.background }]}
+    >
       <View style={styles.section}>
         <Text style={[styles.sectionTitle, { color: colors.text }]}>Theme</Text>
         <SettingItem
@@ -62,7 +71,7 @@ function Settings(props) {
             description: "Join the Dark Side!",
             type: "checkbox",
             value: "dark",
-            action: () => changeTheme("dark")
+            action: () => changeTheme("dark"),
           }}
         />
         <SettingItem
@@ -71,7 +80,7 @@ function Settings(props) {
             description: "Let There be Light!",
             type: "checkbox",
             value: "light",
-            action: () => changeTheme("light")
+            action: () => changeTheme("light"),
           }}
         />
       </View>
@@ -83,6 +92,11 @@ function Settings(props) {
           item={{
             title: "Report an Issue",
             description: "Facing an issue? Report and we'll look into it.",
+            action: () => {
+              Linking.openURL(
+                "mailto: davidadegoke31@gmail.com?subject=Mono Weather Support Ticket"
+              );
+            },
           }}
         />
         <SettingItem
@@ -98,6 +112,9 @@ function Settings(props) {
           item={{
             title: "About Mono",
             description: "Read a bit more about the app",
+            action: () => {
+              setModalVisible(true);
+            }
           }}
         />
         <SettingItem
@@ -106,7 +123,11 @@ function Settings(props) {
             description: "Get to know the team that made Mono a reality.",
           }}
         />
+        <Text style={{ color: colors.text}}>
+          {JSON.stringify(props)}
+        </Text>
       </View>
+      <MonoModal type={modalType} />
     </ScrollView>
   );
 }
