@@ -30,7 +30,7 @@ export default function TeamMono() {
         >
           <Feather
             name={member.icon}
-            size={24}
+            size={20}
             style={{ opacity: 0.6 }}
             color={"#19456b"}
           />

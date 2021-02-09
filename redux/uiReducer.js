@@ -1,13 +1,16 @@
 import { SET_LOADING, SET_THEME, TOGGLE_MODAL } from "./action-types";
 
 const initialState = {
-  theme: "light",
+  theme: "dark",
   loading: false,
   unit: "metric",
-  modalVisible: false,
+  modal: {
+    visible: false,
+    type: ""
+  },
 };
 
-function uiReducer(state = initialState, action) {
+const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_THEME:
       return {
@@ -20,13 +23,13 @@ function uiReducer(state = initialState, action) {
         loading: action.payload,
       };
     case TOGGLE_MODAL:
-        return {
-            ...state,
-            modalVisible: action.payload,
-        }
+      return {
+        ...state,
+        modal: action.payload,
+      };
     default:
-      return state;
+      return {...state};
   }
-}
+};
 
 export default uiReducer;

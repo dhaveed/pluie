@@ -8,7 +8,7 @@ import weatherReducer from "./weatherReducer";
 const persistConfig = {
     key: "root",
     storage: AsyncStorage,
-    // whitelist: ["ui"]
+    whitelist: ["ui"]
 }
 
 const rootReducer = combineReducers({
@@ -18,5 +18,5 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = createStore(persistedReducer, applyMiddleware(thunk));
+export const store = createStore(persistedReducer, {}, applyMiddleware(thunk));
 export const persistor = persistStore(store);

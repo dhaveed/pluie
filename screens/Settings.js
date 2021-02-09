@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
-import { SET_THEME } from "../redux/action-types";
+import { SET_THEME, TOGGLE_MODAL } from "../redux/action-types";
 import { connect } from "react-redux";
 import MonoModal from "../components/MonoModal";
 import { useState } from "react";
@@ -26,17 +26,23 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setTheme: (theme) => dispatch({ type: SET_THEME, payload: theme }),
+    toggleModal: (payload) => dispatch({ type: TOGGLE_MODAL, payload: payload })
   };
 };
 
 function Settings(props) {
   const { colors } = useTheme();
-  const [modalType, setModalType] = useState("about");
+  const [modalType, setModalType] = useState("");
 
   const changeTheme = (theme) => {
     const { setTheme } = props;
     setTheme(theme);
   };
+
+  const openModal = (type) => {
+    setModalType(type);
+    return props.toggleModal({ visible: true, type: type});
+  }
 
   const SettingItem = ({ item }) => {
     const { colors } = useTheme();
@@ -113,7 +119,7 @@ function Settings(props) {
             title: "About Mono",
             description: "Read a bit more about the app",
             action: () => {
-              setModalVisible(true);
+              openModal("about");
             }
           }}
         />
@@ -121,13 +127,13 @@ function Settings(props) {
           item={{
             title: "The Team",
             description: "Get to know the team that made Mono a reality.",
+            action: () => {
+              openModal("team");
+            }
           }}
         />
-        <Text style={{ color: colors.text}}>
-          {JSON.stringify(props)}
-        </Text>
       </View>
-      <MonoModal type={modalType} />
+      <MonoModal />
     </ScrollView>
   );
 }

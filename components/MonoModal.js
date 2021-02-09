@@ -28,26 +28,30 @@ const mapDispatchToProps = (dispatch) => {
 
 function MonoModal(props) {
   const [modalVisible, setModalVisible] = useState(props.visible);
-  console.log(props);
+
+  const closeModal = () => {
+    return props.toggleModal({ visible: false, type: ""})
+  }
+
   return (
     <Modal
       animationType="slide"
       transparent={true}
-      visible={false}
+      visible={props.ui.modal.visible}
       onRequestClose={() => {
-        Alert.alert("Modal has been closed.");
+        console.log("Modal has been closed.");
       }}
     >
       <View style={{ backgroundColor: "#00000090", flex: 1 }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <View style={styles.modalBar}></View>
+            <View style={styles.modalBar}>
+              <TouchableOpacity style={styles.closeButton} activeOpacity={0.6} onPress={() => closeModal()}>
+                <Feather name="x" size={24} />
+              </TouchableOpacity>
+            </View>
             <View style={{ width: "100%" }}>
-              {/* <AboutMono /> */}
-              {/* <TeamMono /> */}
-              <Text>
-                {JSON.stringify(props.ui)}
-              </Text>
+              {props.ui.modal.type === "about" ? <AboutMono /> : <TeamMono />}
             </View>
           </View>
         </View>
@@ -63,24 +67,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
   },
-  closeButtonWrap: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    // paddingVertical: 10,
-    width: "100%",
-    marginBottom: 15,
-  },
   closeButton: {
-    backgroundColor: "#00000015",
-    padding: 5,
+    backgroundColor: "#ffffff",
     borderRadius: 30,
+    width: 40,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
   },
   modalView: {
     marginHorizontal: 30,
     marginBottom: 40,
     backgroundColor: "white",
-    borderRadius: 20,
+    borderRadius: 40,
     paddingHorizontal: 20,
     paddingVertical: 20,
     alignItems: "center",
@@ -103,12 +102,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   modalBar: {
-    height: 4,
-    backgroundColor: "white",
-    borderRadius: 30,
-    width: "20%",
-    position: "relative",
-    top: -40,
+    alignItems: "center",
+    alignSelf: "center",
+    position: "absolute",
+    top: -55,
+    marginBottom: 0
   },
 });
 
