@@ -72,14 +72,14 @@ function RootNavigator(props) {
           }}
           // mode={"modal"}
         >
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Weather"
             component={Weather}
             options={({ route, navigation }) => ({
               headerRight: () => <WeatherHeaderRight navigation={navigation} />,
               headerLeft: () => <WeatherHeaderLeft navigation={navigation} location={!!props.weather.primary.main && props.weather.primary.name} />,
             })}
-          /> */}
+          />
           <Stack.Screen
             name="Forecast"
             component={Forecast}

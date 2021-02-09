@@ -15,12 +15,12 @@ export const WeatherHeaderRight = ({ navigation }) => {
   const { colors } = useTheme();
   return (
     <View style={styles.headerRightStyles}>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() => navigation.navigate("Cities")}
         style={styles.headerRightButton}
       >
         <Feather name="map-pin" size={24} color={colors.text} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity
         onPress={() => navigation.navigate("Settings")}
         style={styles.headerRightButton}

@@ -158,12 +158,12 @@ function Weather(props) {
             </View>
           </View>
         </View>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.forecastArrowWrap}
           onPress={() => navigation.navigate("Forecast")}
         >
           <Feather name="chevron-up" size={24} color={colors.text} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   } else {
